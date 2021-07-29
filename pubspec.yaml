@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get: ^4.3.0 # 상태관리
   sqflite: ^2.0.0+3 # 로컬 DB
 
 dev_dependencies:
