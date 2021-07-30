@@ -36,23 +36,25 @@ class HomePage extends StatelessWidget {
                       color: Get.theme.primaryColor,
                       shape: BoxShape.circle
                     ),
-                    padding: EdgeInsets.all(5),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkResponse(
-                        onTap: (){},
-                        radius: 30,
-                        highlightShape: BoxShape.circle,
-                        child: Icon(
-                          Icons.add,
-                          color: Get.theme.highlightColor,
-                        ),
+                    child: IconButton(
+                      onPressed: (){},
+                      icon: Icon(
+                        Icons.add,
+                        color: Get.theme.highlightColor,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
+            SizedBox(height: 24,),
+            Column(
+              children: [
+
+              ],
+            ),
+            SizedBox(height: 24,),
+
           ],
         ),
       ),
