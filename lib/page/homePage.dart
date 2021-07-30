@@ -39,15 +39,15 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.all(5),
                     child: Material(
                       color: Colors.transparent,
-                      child: Semantics(
-                        child: InkResponse(
-                          onTap: (){},
-                          child: Icon(
-                            Icons.add,
-                            color: Get.theme.highlightColor,
-                          ),
+                      child: InkResponse(
+                        onTap: (){},
+                        radius: 30,
+                        highlightShape: BoxShape.circle,
+                        child: Icon(
+                          Icons.add,
+                          color: Get.theme.highlightColor,
                         ),
-                      )
+                      ),
                     ),
                   ),
                 ],
