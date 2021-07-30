@@ -15,7 +15,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 2), (){
-      Get.offAll(HomePage());
+      Get.offAll(()=>HomePage());
     });
     super.initState();
   }
