@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.13.4 <3.0.0"
 
 dependencies:
   flutter:
@@ -17,7 +17,8 @@ dependencies:
   cached_network_image: ^3.1.0 # 캐쉬이미지
 
   firebase_core: ^1.4.0 # 파이어베이스 코어
-  firebase_database: ^7.1.2 # 파이어베이스 RTDB
+  firebase_auth: ^3.0.1 # 파이어베이스 인증
+  firebase_database: ^7.1.2 # 파이어베이스 데이터베이스
   firebase_storage: ^10.0.1 # 파이어베이스 스토리지
 
 dev_dependencies:
