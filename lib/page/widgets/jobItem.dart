@@ -7,9 +7,8 @@ import 'package:wdid/model/Job.dart';
 class JobItem extends StatelessWidget {
 
   final Job job;
-  final VoidCallback? onTap;
 
-  JobItem(this.job,{this.onTap});
+  JobItem(this.job,);
 
   String parseDate(DateTime d) {
     int h = d.hour;
@@ -21,7 +20,7 @@ class JobItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
-      onTap: onTap,
+      onTap: (){},
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
         child: Column(
@@ -46,20 +45,30 @@ class JobItem extends StatelessWidget {
                 ),
               ],
             ),
-            (job.photos!=null)&&(job.photos!.length!=0)?
+            job.thumbnail!=null?
             Container(
               margin: EdgeInsets.only(top: 8),
               height: 250,
               width: Get.width,
               decoration: BoxDecoration(
-                color: Get.theme.primaryColor
+                color: Get.theme.primaryColor,
+                borderRadius: BorderRadius.circular(16)
               ),
-              child: Stack(
+              child:Stack(
                 fit: StackFit.expand,
                 children: [
                   CachedNetworkImage(
-                    imageUrl: job.photos!.first,
-                    fit: BoxFit.fill,
+                    imageUrl: job.thumbnail!,
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(16)
+                      ),
+                    ),
+                    placeholder: (context, url) => SizedBox(),
                     errorWidget: (context, url, error) => SizedBox(),
                   ),
                   job.photos!.length>1?Align(
@@ -68,13 +77,13 @@ class JobItem extends StatelessWidget {
                       margin: EdgeInsets.all(8),
                       padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
                       decoration: BoxDecoration(
-                        color: Get.theme.primaryColor,
-                        borderRadius: BorderRadius.circular(30)
+                          color: Get.theme.primaryColor,
+                          borderRadius: BorderRadius.circular(30)
                       ),
                       child: Text(
                         "+${job.photos!.length-1}",
                         style: TextStyle(
-                          color: Get.theme.highlightColor
+                            color: Get.theme.highlightColor
                         ),
                       ),
                     ),

@@ -55,8 +55,10 @@ class HomePage extends StatelessWidget {
                   JobItem(
                     Job(
                       id:1,
+                      userId: 1,
                       title:"테스트",
                       completeDate: DateTime.now(),
+                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300",
                       photos: [
                         "https://media.discordapp.net/attachments/700221362937266289/827558753293172746/unknown.png?width=668&height=676",
                         "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
@@ -68,6 +70,7 @@ class HomePage extends StatelessWidget {
                   JobItem(
                     Job(
                       id:1,
+                      userId: 1,
                       title:"테스트222",
                       completeDate: DateTime.now(),
                       body: "가낟ㅁㄴㅇㅁㄴ여ㅛㅎㅍㄴㅁ엻ㄴㅇㅁ로ㅓㅁㄴㅇㄹ오ㅓㅁㄴ어ㅗ "
@@ -76,8 +79,10 @@ class HomePage extends StatelessWidget {
                   JobItem(
                     Job(
                       id:1,
+                      userId: 1,
                       title:"테스3333",
                       completeDate: DateTime.now(),
+                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
                       photos: [
                         "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
                       ],
@@ -86,6 +91,7 @@ class HomePage extends StatelessWidget {
                   JobItem(
                     Job(
                       id:1,
+                      userId: 1,
                       title:"테스트444444",
                       completeDate: DateTime.now(),
                     ),
@@ -93,8 +99,10 @@ class HomePage extends StatelessWidget {
                   JobItem(
                     Job(
                       id:1,
+                      userId: 1,
                       title:"테스3333",
                       completeDate: DateTime.now(),
+                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300",
                       photos: [
                         "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300"
                       ],
