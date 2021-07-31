@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "783423884863",
+    "project_id": "wdid-fdbb7",
+    "storage_bucket": "wdid-fdbb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783423884863:android:b387fb918646a24549328a",
+        "android_client_info": {
+          "package_name": "com.zeratulspc.wdid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783423884863-5jcr08uboed7iise18n2btcsge2eqmr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg9sBwNiZemnnszb-YhoJ_DksV5rnn_O4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783423884863-5jcr08uboed7iise18n2btcsge2eqmr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
