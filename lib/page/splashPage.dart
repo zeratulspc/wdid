@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/page/homePage.dart';
+
+import 'auth/authPage.dart';
+import 'homePage.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -15,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 2), (){
-      Get.offAll(()=>HomePage());
+      Get.offAll(()=>AuthPage());
     });
     super.initState();
   }
