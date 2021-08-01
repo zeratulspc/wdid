@@ -48,8 +48,8 @@ class HomePage extends StatelessWidget {
                     Job(
                       id:1,
                       userId: 1,
-                      title:"테스트",
-                      completeDate: DateTime.now(),
+                      title:"테스트asdasdasdasdas dasdasdasdasdasdasdasdasdasdasddassdasdasdasdasdasdasdasdasdasd",
+                      completeDate: DateTime.now().subtract(Duration(hours: 12)),
                       thumbnail: "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300",
                       photos: [
                         "https://media.discordapp.net/attachments/700221362937266289/827558753293172746/unknown.png?width=668&height=676",

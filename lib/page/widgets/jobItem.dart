@@ -13,7 +13,7 @@ class JobItem extends StatelessWidget {
   String parseDate(DateTime d) {
     int h = d.hour<12?d.hour:d.hour-12;
     int m = d.minute;
-    return "${h>=10?h:"0$h"}:${m>=10?m:"0$m"} ${h<12?"AM":"PM"}";
+    return "${h>=10?h:"0$h"}:${m>=10?m:"0$m"} ${d.hour<12?"AM":"PM"}";
   }
 
   @override
@@ -43,11 +43,15 @@ class JobItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      job.title,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w800
+                    Expanded(
+                      child: Text(
+                        job.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800
+                        ),
                       ),
                     ),
                     Text(
