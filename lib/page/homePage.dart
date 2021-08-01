@@ -14,40 +14,32 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height:15,),
-              IconButton(
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
-                onPressed: (){},
-                icon: Icon(Icons.reorder),
+              SizedBox(height:MediaQuery.of(context).padding.top,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: BoxConstraints(),
+                    onPressed: (){},
+                    icon: Icon(Icons.reorder),
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: BoxConstraints(),
+                    onPressed: (){},
+                    icon: Icon(Icons.account_circle),
+                  ),
+                ],
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "오늘은..",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Get.theme.primaryColor,
-                          shape: BoxShape.circle
-                      ),
-                      child: IconButton(
-                        onPressed: (){},
-                        icon: Icon(
-                          Icons.add,
-                          color: Get.theme.highlightColor,
-                        ),
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  "오늘은..",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               Column(
