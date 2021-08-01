@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 2), (){
-      Get.offAll(()=>HomePage());
+      Get.offAll(()=>AuthPage());
     });
     super.initState();
   }
@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: Get.theme.primaryColor,
       body: Center(
         child: Text(
-          "What did i do?",
+          "WDID",
           style:TextStyle(
             color: Get.theme.highlightColor,
             fontSize: 32,
