@@ -12,7 +12,7 @@ class _AuthPageState extends State<AuthPage> {
 
   final GlobalKey authWidgetKey = GlobalKey();
 
-  bool isLogin = false;
+  bool isLogin = true;
 
   @override
   Widget build(BuildContext context) {

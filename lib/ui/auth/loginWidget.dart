@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/ui/widgets/loadingDialog.dart';
 
 class LoginWidget extends StatefulWidget {
   final VoidCallback onRegisterTap;
@@ -15,11 +16,11 @@ class _LoginWidgetState extends State<LoginWidget> {
   final _formKey = GlobalKey<FormState>();
   String _email = "";
   String _password = "";
-  bool _autoLogin = true;
+  bool _autoLogin = false;
 
   _login() {
     if(_formKey.currentState!.validate()){
-      Get.dialog(widget);
+      Get.dialog(LoadingDialog());
     }
   }
 

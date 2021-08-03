@@ -27,7 +27,7 @@ class JobItem extends StatelessWidget {
               blurRadius: 10,
               color: Color(0x1A000000)
           )
-          ]
+        ]
       ),
       child: Material(
         color: Colors.transparent,
