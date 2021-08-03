@@ -19,7 +19,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   _login() {
     if(_formKey.currentState!.validate()){
-
+      Get.dialog(widget);
     }
   }
 

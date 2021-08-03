@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/page/auth/loginWidget.dart';
-import 'package:wdid/page/auth/registerWidget.dart';
+import 'loginWidget.dart';
+import 'registerWidget.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _AuthPageState extends State<AuthPage> {
 
   final GlobalKey authWidgetKey = GlobalKey();
 
-  bool isLogin = true;
+  bool isLogin = false;
 
   @override
   Widget build(BuildContext context) {

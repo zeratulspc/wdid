@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/model/Job.dart';
-import 'package:wdid/page/widgets/jobItem.dart';
+import '../model/Job.dart';
+import 'widgets/jobItem.dart';
 
 class HomePage extends StatelessWidget {
 

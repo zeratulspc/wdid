@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/wdidTheme.dart';
-import 'package:wdid/page/splashPage.dart';
+import 'wdidTheme.dart';
+import 'ui/splashPage.dart';
 
 void main() {
   runApp(WDID());
