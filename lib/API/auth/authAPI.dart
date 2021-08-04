@@ -19,7 +19,7 @@ class AuthAPI {
       case "ERROR_USER_DISABLED":
         return "사용 정지된 아이디입니다, 관리자에게 문의하세요.";
       case "ERROR_TOO_MANY_ATTEMPTS_TRY_LATER":
-        return "잠시 후에 시도하세요.v
+        return "잠시 후에 시도하세요.";
       case "ERROR_WRONG_PASSWORD":
         return "비밀번호가 틀렸습니다.";
       case "ERROR_EMAIL_ALREADY_IN_USE":
