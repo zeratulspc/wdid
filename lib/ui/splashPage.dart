@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 2), (){
-      Get.offAll(()=>AuthPage());
+      Get.offAllNamed('/auth');
     });
     super.initState();
   }
