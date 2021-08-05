@@ -21,7 +21,7 @@ class WDID extends StatelessWidget {
         highlightColor: WdidTheme.wdidA,
       ),
       home: SplashPage(),
-      initialRoute: '/',
+      initialRoute: Routes.INITIAL,
       getPages: AppPages.pages
     );
   }

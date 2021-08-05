@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/routes/appRoutes.dart';
 
 import 'auth/authPage.dart';
 import 'homePage.dart';
@@ -16,8 +18,8 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    Timer(Duration(seconds: 2), (){
-      Get.offAllNamed('/auth');
+    Firebase.initializeApp().then((v) {
+      return Get.offAllNamed(Routes.AUTH);
     });
     super.initState();
   }

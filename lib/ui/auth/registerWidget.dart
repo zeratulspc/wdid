@@ -21,8 +21,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   _register() async {
     if(_formKey.currentState!.validate()){
+      _formKey.currentState!.save();
       UserCredential a = await _authAPI.register(email: _email, password: _password);
-      print(a.credential!.token);
       if(a.user!=null) {
         await _authAPI.createUser(a.user!.uid, _username, _email);
       }
@@ -58,8 +58,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
       if(v.length<=0) {
         return '비밀번호를 입력해주세요.';
       } else {
-        if(v.length<=8) {
-          return '비밀번호는 8글자 이상이어야 합니다.';
+        if(v.length<=6) {
+          return '비밀번호는 6글자 이상이어야 합니다.';
         }
         return null;
       }
