@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class AuthAPI {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final userDBRef = FirebaseDatabase.instance.reference().child("Users");
 
   // 에러 메세지 한글화
   String errorKr(String code) {
@@ -40,7 +42,16 @@ class AuthAPI {
     }
   }
 
-  Future createUser() async {
+  Future login({
+    required String email,
+    required String password}) async {
+    try {
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthException(code: e.code, message: e.message, credential: e.credential);
+    }
+  }
 
+  Future createUser(String uid,String username,String email) async {
+    await userDBRef.child(uid).set({'username' : username, 'email' : email,});
   }
 }

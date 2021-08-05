@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/API/auth/authAPI.dart';
 
 class RegisterWidget extends StatefulWidget {
   final VoidCallback onBackTap;
@@ -11,15 +13,19 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
-
+  final AuthAPI _authAPI = AuthAPI();
   final _formKey = GlobalKey<FormState>();
   String _username = "";
   String _email = "";
   String _password = "";
 
-  _register() {
+  _register() async {
     if(_formKey.currentState!.validate()){
-
+      UserCredential a = await _authAPI.register(email: _email, password: _password);
+      print(a.credential!.token);
+      if(a.user!=null) {
+        await _authAPI.createUser(a.user!.uid, _username, _email);
+      }
     }
   }
 
