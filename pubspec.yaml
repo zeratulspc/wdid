@@ -19,7 +19,7 @@ dependencies:
 
   firebase_core: ^1.4.0 # 파이어베이스 코어
   firebase_auth: ^3.0.1 # 파이어베이스 인증
-  firebase_database: ^7.1.2 # 파이어베이스 데이터베이스
+  cloud_firestore: ^2.4.0 # 파이이어스토어
   firebase_storage: ^10.0.1 # 파이어베이스 스토리지
 
 dev_dependencies:

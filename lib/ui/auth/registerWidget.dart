@@ -22,10 +22,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   _register() async {
     if(_formKey.currentState!.validate()){
       _formKey.currentState!.save();
-      UserCredential a = await _authAPI.register(email: _email, password: _password);
-      if(a.user!=null) {
-        await _authAPI.createUser(a.user!.uid, _username, _email);
-      }
+     if(await _authAPI.register(email: _email, password: _password, username: _username)) {
+       /// TO HOME
+     }
     }
   }
 

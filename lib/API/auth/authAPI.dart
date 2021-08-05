@@ -1,9 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:wdid/model/User.dart';
 
 class AuthAPI {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final userDBRef = FirebaseDatabase.instance.reference().child("Users");
+  final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
+  final userDBRef = FirebaseFirestore.instance.collection("Users");
 
   // 에러 메세지 한글화
   String errorKr(String code) {
@@ -32,26 +33,36 @@ class AuthAPI {
   }
 
   // Firebase 가입
-  Future<UserCredential> register({
+  Future<bool> register({
+    required String username,
     required String email,
     required String password}) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code, message: e.message, credential: e.credential);
+      _auth.createUserWithEmailAndPassword(email: email, password: password)
+        .then((user){
+          createUser(User(
+            username: username,
+            registerDate: DateTime.now(),
+            uid: user.user!.uid
+          ));
+        });
+      return true;
+    } on auth.FirebaseAuthException catch (e) {
+      throw auth.FirebaseAuthException(code: e.code, message: e.message, credential: e.credential);
     }
   }
 
-  Future login({
+  Future<auth.UserCredential> signIn({
     required String email,
     required String password}) async {
     try {
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code, message: e.message, credential: e.credential);
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on auth.FirebaseAuthException catch (e) {
+      throw auth.FirebaseAuthException(code: e.code, message: e.message, credential: e.credential);
     }
   }
 
-  Future createUser(String uid,String username,String email) async {
-    await userDBRef.child(uid).set({'username' : username, 'email' : email,});
+  Future createUser(User user) async {
+    await userDBRef.add(user.toJson());
   }
 }
