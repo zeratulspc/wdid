@@ -1,7 +1,7 @@
 
 class Job {
-  final int id;
-  final int userId;
+  final String id;
+  final String uid;
   final String title;
   final DateTime completeDate;
   final String? thumbnail;
@@ -10,7 +10,7 @@ class Job {
 
   Job({
     required this.id,
-    required this.userId,
+    required this.uid,
     required this.title,
     required this.completeDate,
     this.thumbnail,
@@ -18,5 +18,15 @@ class Job {
     this.body
   });
 
-
+  factory Job.fromJson(String key, Map<String, dynamic> json) {
+    return Job(
+      id: key,
+      uid: json['uid'],
+      title: json['title'],
+      completeDate: DateTime.parse(json['completeDate']),
+      thumbnail: json['thumbnail'],
+      photos: json['photos'],
+      body: json['body']
+    );
+  }
 }

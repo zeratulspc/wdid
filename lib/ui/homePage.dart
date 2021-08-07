@@ -5,9 +5,21 @@ import 'widgets/jobItem.dart';
 
 class HomePage extends StatelessWidget {
 
+  List<Widget> getJobItems(List<Job> _jobs) {
+    return _jobs.length > 0 ?
+      List.generate(_jobs.length, (i) =>JobItem(_jobs[i])) :
+      [Center(
+        child: Text("추가한 일정이 없습니다.."),
+      )];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {  },
+        child: Icon(Icons.add),
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(30),
@@ -43,71 +55,14 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Column(
-                children: [
-                  JobItem(
-                    Job(
-                      id:1,
-                      userId: 1,
-                      title:"테스트asdasdasdasdas dasdasdasdasdasdasdasdasdasdasddassdasdasdasdasdasdasdasdasdasd",
-                      completeDate: DateTime.now().subtract(Duration(hours: 12)),
-                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300",
-                      photos: [
-                        "https://media.discordapp.net/attachments/700221362937266289/827558753293172746/unknown.png?width=668&height=676",
-                        "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
-                        "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300"
-                      ],
-                      body: "가낟ㅁㄴㅇㅁㄴ여ㅛㅎㅍㄴㅁ엻ㄴㅇㅁ로ㅓㅁㄴㅇㄹ오ㅓㅁㄴ어ㅗ "
-                    ),
-                  ),
-                  JobItem(
-                    Job(
-                      id:1,
-                      userId: 1,
-                      title:"테스트222",
-                      completeDate: DateTime.now(),
-                      body: "가낟ㅁㄴㅇㅁㄴ여ㅛㅎㅍㄴㅁ엻ㄴㅇㅁ로ㅓㅁㄴㅇㄹ오ㅓㅁㄴ어ㅗ "
-                    ),
-                  ),
-                  JobItem(
-                    Job(
-                      id:1,
-                      userId: 1,
-                      title:"테스3333",
-                      completeDate: DateTime.now(),
-                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
-                      photos: [
-                        "https://media.discordapp.net/attachments/700221362937266289/799033194572677120/unknown.png?width=400&height=244",
-                      ],
-                    ),
-                  ),
-                  JobItem(
-                    Job(
-                      id:1,
-                      userId: 1,
-                      title:"테스트444444",
-                      completeDate: DateTime.now(),
-                    ),
-                  ),
-                  JobItem(
-                    Job(
-                      id:1,
-                      userId: 1,
-                      title:"테스3333",
-                      completeDate: DateTime.now(),
-                      thumbnail: "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300",
-                      photos: [
-                        "https://media.discordapp.net/attachments/700221362937266289/713787988978696202/unknown.png?width=396&height=300"
-                      ],
-                    ),
-                  ),
-                ],
+                children: getJobItems([])
               ),
               SizedBox(height: 24,),
 
             ],
           ),
         ),
-      )
+      ),
     );
   }
 

@@ -38,7 +38,7 @@ class AuthAPI {
     required String email,
     required String password}) async {
     try {
-      _auth.createUserWithEmailAndPassword(email: email, password: password)
+      await _auth.createUserWithEmailAndPassword(email: email, password: password)
         .then((user){
           createUser(User(
             username: username,
@@ -63,6 +63,6 @@ class AuthAPI {
   }
 
   Future createUser(User user) async {
-    await userDBRef.add(user.toJson());
+    await userDBRef.doc(user.uid).set(user.toJson());
   }
 }

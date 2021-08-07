@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/API/authAPI.dart';
+import 'package:wdid/routes/appRoutes.dart';
 import 'package:wdid/ui/widgets/loadingDialog.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -20,7 +22,11 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   _login() {
     if(_formKey.currentState!.validate()){
+      _formKey.currentState!.save();
       Get.dialog(LoadingDialog());
+      AuthAPI().signIn(email: _email, password: _password).then((value) {
+        Get.offAllNamed(Routes.HOME);
+      });
     }
   }
 
@@ -121,40 +127,13 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height:24,
-                          width: 24,
-                          child: Checkbox(
-                            value: _autoLogin,
-                            onChanged: (v)=>setState(()=>_autoLogin=v!),
-                          ),
-                        ),
-                        SizedBox(width: 8,),
-                        Text(
-                          "자동 로그인",
-                          style: TextStyle(
-                              color: Color(0xb3000000),
-                              fontSize: 12
-                          ),
-                        )
-                      ],
-                    )
-                ),
-                TextButton(
-                  onPressed: widget.onRegisterTap,
-                  child: Text(
-                    "회원가입",
-                  ),
-                ),
-              ],
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: widget.onRegisterTap,
+              child: Text(
+                "회원가입",
+              ),
             ),
           ),
           Container(
