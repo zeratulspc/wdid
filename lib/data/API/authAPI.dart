@@ -65,4 +65,18 @@ class AuthAPI {
   Future createUser(User user) async {
     await userDBRef.doc(user.uid).set(user.toJson());
   }
+
+  Future<User?> getUser(String targetUID) async {
+    try {
+      return await userDBRef.doc(targetUID).get().then((value) {
+        if(value.data()!=null) {
+          return User.fromJson(value.data()!);
+        } else {
+          throw NullThrownError();
+        }
+      });
+    } catch (e) {
+
+    }
+  }
 }
