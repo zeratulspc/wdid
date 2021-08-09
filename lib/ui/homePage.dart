@@ -9,7 +9,10 @@ class HomePage extends GetView<HomeController> {
 
   List<Widget> getJobItems(List<Job> _jobs) {
     return _jobs.length > 0 ?
-      List.generate(_jobs.length, (i) =>JobItem(_jobs[i])) :
+      _jobs.map((e)=>e.isToday()?JobItem(e):null)
+        .where((e)=>e!=null)
+        .cast<JobItem>()
+        .toList() :
       [Center(
         child: Text("아직 추가한 일정이 없습니다.."),
       )];
@@ -19,14 +22,13 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => JobAPI().addJob(
-          Job(
-            id: "",
-            uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
-            title: "TITLE",
-            completeDate: DateTime.now(),
-          ),
-        ),
+        onPressed: () => controller.addJob(Job(
+          id: "",
+          uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
+          title: "영환바보!",
+          body: "영환은 바보",
+          completeDate: DateTime.now(),
+        ),),
         child: Icon(Icons.add),
       ),
       body: SingleChildScrollView(

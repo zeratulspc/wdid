@@ -40,4 +40,15 @@ class Job {
       'body' : body,
     };
   }
+
+  bool isToday() {
+    DateTime now = DateTime.now();
+    if(DateTime(completeDate.year,completeDate.month,completeDate.day)
+        .difference(DateTime(now.year,now.month,now.day))
+        .inDays == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
