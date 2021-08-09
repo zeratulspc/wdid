@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wdid/routes/appRoutes.dart';
 
-import 'auth/authPage.dart';
-import 'homePage.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -19,11 +16,13 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    if(FirebaseAuth.instance.currentUser != null) {
-      Get.offAllNamed(Routes.HOME);
-    } else {
-      Get.offAllNamed(Routes.AUTH);
-    }
+    Timer(Duration(seconds: 1),(){
+      if(FirebaseAuth.instance.currentUser != null) {
+        Get.offAllNamed(Routes.HOME);
+      } else {
+        Get.offAllNamed(Routes.AUTH);
+      }
+    });
     super.initState();
   }
 

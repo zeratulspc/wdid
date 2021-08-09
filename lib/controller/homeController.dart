@@ -6,9 +6,19 @@ import 'package:wdid/data/repository/repository.dart';
 
 class HomeController extends GetxController {
   final Repository repo;
-  final jobs = [].obs;
+  final jobs = List.filled(
+    0,
+    Job(id: '', title: '', completeDate: DateTime.now(), uid: '',),
+    growable: true
+  ).obs;
 
   HomeController(this.repo);
+
+  @override
+  void onInit() async {
+    jobs.value = await fetchJobs();
+    super.onInit();
+  }
 
   fetchJobs({String? targetUID}) async {
     if(targetUID!=null) {
@@ -16,6 +26,11 @@ class HomeController extends GetxController {
     } else {
       return await repo.fetchJobs(FirebaseAuth.instance.currentUser!.uid);
     }
+  }
+
+  addJob(Job job) async {
+    await repo.addJob(job);
+    jobs.value = await fetchJobs();
   }
 
 }

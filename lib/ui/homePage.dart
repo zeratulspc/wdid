@@ -66,7 +66,7 @@ class HomePage extends GetView<HomeController> {
                     ),
                   ),
                   Column(
-                      children: getJobItems(_.jobs as List<Job>)
+                    children: getJobItems(_.jobs)
                   ),
                   SizedBox(height: 24,),
 

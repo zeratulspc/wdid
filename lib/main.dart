@@ -11,7 +11,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(WDID());
-
 }
 
 class WDID extends StatelessWidget {
