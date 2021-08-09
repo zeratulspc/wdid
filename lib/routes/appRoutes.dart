@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:wdid/binding/homeBinding.dart';
 import 'package:wdid/ui/auth/authPage.dart';
 import 'package:wdid/ui/homePage.dart';
 import 'package:wdid/ui/splashPage.dart';
@@ -15,6 +16,6 @@ class AppPages {
   static final pages = [
     GetPage(name: Routes.SPLASH, page: () => SplashPage()),
     GetPage(name: Routes.AUTH, page: () => AuthPage()),
-    GetPage(name: Routes.HOME, page: () => HomePage()),
+    GetPage(name: Routes.HOME, page: () => HomePage(), binding: HomeBinding()),
   ];
 }

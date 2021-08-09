@@ -4,8 +4,8 @@ import 'package:wdid/data/models/Job.dart';
 class JobAPI {
   static final jobDBRef = FirebaseFirestore.instance.collection("Jobs");
 
- Future<List<Job>> fetchJobs(String targetUid) async {
-   return await jobDBRef.where('uid',isEqualTo: targetUid).get().then((v){
+ Future<List<Job>> fetchJobs(String targetUID) async {
+   return await jobDBRef.where('uid',isEqualTo: targetUID).get().then((v){
      return v.docs.map((e) => Job.fromJson(e.id, e.data())).toList();
    });
  }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/controller/homeController.dart';
 import 'package:wdid/data/models/Job.dart';
 import 'package:wdid/data/provider/jobAPI.dart';
 import 'widgets/jobItem.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
 
   List<Widget> getJobItems(List<Job> _jobs) {
     return _jobs.length > 0 ?
@@ -29,47 +30,51 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height:MediaQuery.of(context).padding.top,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: GetX<HomeController>(
+          builder: (_){
+            return Container(
+              margin: EdgeInsets.all(30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
-                    onPressed: (){},
-                    icon: Icon(Icons.reorder),
+                  SizedBox(height:MediaQuery.of(context).padding.top,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        onPressed: (){},
+                        icon: Icon(Icons.reorder),
+                      ),
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(),
+                        onPressed: (){},
+                        icon: Icon(Icons.account_circle),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
-                    onPressed: (){},
-                    icon: Icon(Icons.account_circle),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 24),
+                    child: Text(
+                      "오늘은..",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
+                  Column(
+                      children: getJobItems(_.jobs as List<Job>)
+                  ),
+                  SizedBox(height: 24,),
+
                 ],
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 24),
-                child: Text(
-                  "오늘은..",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Column(
-                children: getJobItems([])
-              ),
-              SizedBox(height: 24,),
-
-            ],
-          ),
-        ),
+            );
+          },
+        )
       ),
     );
   }
