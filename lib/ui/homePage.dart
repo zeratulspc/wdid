@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../model/Job.dart';
+import 'package:wdid/data/models/Job.dart';
+import 'package:wdid/data/provider/jobAPI.dart';
 import 'widgets/jobItem.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
     return _jobs.length > 0 ?
       List.generate(_jobs.length, (i) =>JobItem(_jobs[i])) :
       [Center(
-        child: Text("추가한 일정이 없습니다.."),
+        child: Text("아직 추가한 일정이 없습니다.."),
       )];
   }
 
@@ -17,7 +18,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
+        onPressed: () => JobAPI().addJob(
+          Job(
+            id: "",
+            uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
+            title: "TITLE",
+            completeDate: DateTime.now(),
+          ),
+        ),
         child: Icon(Icons.add),
       ),
       body: SingleChildScrollView(

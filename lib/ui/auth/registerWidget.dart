@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/data/API/authAPI.dart';
-
+import 'package:wdid/data/provider/authAPI.dart';
 class RegisterWidget extends StatefulWidget {
   final VoidCallback onBackTap;
 

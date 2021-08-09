@@ -29,4 +29,15 @@ class Job {
       body: json['body']
     );
   }
+
+  Map<String,dynamic> toJson() {
+    return {
+      'uid' : uid,
+      'title' : title,
+      'completeDate' : completeDate.toIso8601String(),
+      'thumbnail' : thumbnail,
+      'photos' : photos,
+      'body' : body,
+    };
+  }
 }

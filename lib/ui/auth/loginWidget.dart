@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wdid/data/API/authAPI.dart';
+import 'package:wdid/data/provider/authAPI.dart';
 import 'package:wdid/routes/appRoutes.dart';
 import 'package:wdid/ui/widgets/loadingDialog.dart';
 

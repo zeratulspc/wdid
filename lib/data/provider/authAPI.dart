@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:wdid/model/User.dart';
+import 'package:wdid/data/models/User.dart';
 
 class AuthAPI {
   final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
