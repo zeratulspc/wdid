@@ -7,15 +7,18 @@ import 'widgets/jobItem.dart';
 
 class HomePage extends GetView<HomeController> {
 
-  List<Widget> getJobItems(List<Job> _jobs) {
-    return _jobs.length > 0 ?
-      _jobs.map((e)=>e.isToday()?JobItem(e):null)
+  List<Widget> getTodayJobItems(List<Job> _jobs) {
+    var jobsWidget = _jobs.map((e)=>e.isToday()?JobItem(e):null)
         .where((e)=>e!=null)
         .cast<JobItem>()
-        .toList() :
-      [Center(
-        child: Text("아직 추가한 일정이 없습니다.."),
-      )];
+        .toList();
+    var onNull = [Center(
+      child: Text("아직 추가한 일정이 없습니다.."),
+    )];
+
+    return _jobs.length > 0 ?
+        jobsWidget.length>0 ? jobsWidget : onNull
+        : onNull;
   }
 
   @override
@@ -68,10 +71,9 @@ class HomePage extends GetView<HomeController> {
                     ),
                   ),
                   Column(
-                    children: getJobItems(_.jobs)
+                    children: getTodayJobItems(_.jobs)
                   ),
                   SizedBox(height: 24,),
-
                 ],
               ),
             );
