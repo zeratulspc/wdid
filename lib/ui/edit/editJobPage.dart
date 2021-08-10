@@ -7,6 +7,9 @@ import 'package:wdid/data/models/Job.dart';
 class EditJobPage extends GetView<HomeController> {
   final String? id = Get.parameters['id'];
 
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController bodyController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +47,53 @@ class EditJobPage extends GetView<HomeController> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("일정추가"),
+                  Expanded(
+                    child: Container(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(),
+                        child: TextField(
+                          cursorColor: Theme.of(context).primaryColor,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold
+                          ),
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          maxLength: 32,
+                          decoration: InputDecoration(
+                            hintText: "일정 추가",
+                            border: InputBorder.none,
+                            counterText: "",
+
+                          ),
+                        ),
+                      )
+                    ),
+                  ),
                   TextButton(
                     onPressed: (){},
                     child: Text("지금"),
                   ),
                 ],
+              ),
+              Container(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(),
+                  child: TextField(
+                    cursorColor: Theme.of(context).primaryColor,
+                    style: TextStyle(
+                        fontSize: 18
+                    ),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      hintText: "내용을 입력해주세요",
+                      border: InputBorder.none,
+                    ),
+                  ),
+                )
               ),
             ],
           ),
