@@ -25,13 +25,7 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.addJob(Job(
-          id: "",
-          uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
-          title: "영환바보!",
-          body: "영환은 바보",
-          completeDate: DateTime.now(),
-        ),),
+        onPressed: () => Get.toNamed('/add'),
         child: Icon(Icons.add),
       ),
       body: SingleChildScrollView(
