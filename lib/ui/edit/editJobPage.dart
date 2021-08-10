@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/controller/homeController.dart';
+import 'package:wdid/data/models/Job.dart';
 
-class EditJobPage extends StatelessWidget{
+class EditJobPage extends GetView<HomeController> {
   final String? id = Get.parameters['id'];
 
   @override
@@ -26,7 +29,15 @@ class EditJobPage extends StatelessWidget{
                   IconButton(
                     padding: EdgeInsets.zero,
                     constraints: BoxConstraints(),
-                    onPressed: (){},
+                    onPressed: (){controller.addJob(
+                      Job(
+                        uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
+                        title: "HELLO",
+                        body: "WORD!!!",
+                        completeDate: DateTime.now(),
+                        id: '',
+                      ),
+                    );},
                     icon: Icon(Icons.check),
                   ),
                 ],

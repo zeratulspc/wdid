@@ -33,4 +33,8 @@ class HomeController extends GetxController {
     jobs.value = await fetchJobs();
   }
 
+  refreshJobs() async {
+    jobs.value = await fetchJobs();
+  }
+
 }
