@@ -30,8 +30,14 @@ class HomeController extends GetxController {
 
   addJob(Job job) async {
     await repo.addJob(job);
-    jobs.value = await fetchJobs();
+    refreshJobs();
   }
+
+  deleteJob(String id) async {
+    await repo.deleteJob(id);
+    refreshJobs();
+  }
+
 
   refreshJobs() async {
     jobs.value = await fetchJobs();

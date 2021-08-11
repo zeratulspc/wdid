@@ -3,12 +3,31 @@ import 'package:get/get.dart';
 import 'package:wdid/controller/homeController.dart';
 import 'package:wdid/data/models/Job.dart';
 import 'package:wdid/data/provider/jobAPI.dart';
+import 'package:wdid/ui/widgets/jobOptionDialog.dart';
 import 'widgets/jobItem.dart';
 
 class HomePage extends GetView<HomeController> {
 
   List<Widget> getTodayJobItems(List<Job> _jobs) {
-    var jobsWidget = _jobs.map((e)=>e.isToday()?JobItem(e):null)
+    var jobsWidget = _jobs.map((e)=> e.isToday()?
+          JobItem(
+            e,
+            onTap: (){},
+            onLongPress: (){
+              Get.bottomSheet(
+                JobOptionDialog(
+                  onEditTap: (){
+                    
+                  },
+                  onDeleteTap: (){
+                    controller.deleteJob(e.id);
+                    Get.back();
+                  },
+                ),
+                backgroundColor: Colors.white,
+              );
+            },
+          ):null)
         .where((e)=>e!=null)
         .cast<JobItem>()
         .toList();

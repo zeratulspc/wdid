@@ -6,8 +6,13 @@ import 'package:wdid/data/models/Job.dart';
 class JobItem extends StatelessWidget {
 
   final Job job;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
 
-  JobItem(this.job,);
+  JobItem(this.job,{
+    this.onTap,
+    this.onLongPress
+  });
 
   String parseDate(DateTime d) {
     int h = d.hour<12?d.hour:d.hour-12;
@@ -32,7 +37,8 @@ class JobItem extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: (){},
+          onTap: onTap,
+          onLongPress: onLongPress,
           borderRadius: BorderRadius.circular(12),
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 16,horizontal: 20),
@@ -115,15 +121,14 @@ class JobItem extends StatelessWidget {
                   child: Text(
                     job.body!,
                     style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff000000)
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff000000)
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ):SizedBox(),
-
               ],
             ),
           ),

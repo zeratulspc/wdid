@@ -19,4 +19,8 @@ class Repository {
     await jobAPI.addJob(job);
   }
 
+  deleteJob(String id) async {
+    await jobAPI.deleteJob(id);
+  }
+
 }

@@ -14,4 +14,9 @@ class JobAPI {
    await jobDBRef.add(job.toJson());
  }
 
+ Future<void> deleteJob(String id) async {
+   await jobDBRef.doc(id).delete();
+ }
+
+
 }

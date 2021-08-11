@@ -10,6 +10,22 @@ class EditJobPage extends GetView<HomeController> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController bodyController = TextEditingController();
 
+  void saveJob() {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    String title = titleController.text;
+    String body = bodyController.text;
+    controller.addJob(
+      Job(
+        uid: FirebaseAuth.instance.currentUser!.uid,
+        title: titleController.text,
+        body: bodyController.text,
+        completeDate: DateTime.now(),
+        id: '',
+      ),
+    );
+    Get.back();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,15 +48,7 @@ class EditJobPage extends GetView<HomeController> {
                   IconButton(
                     padding: EdgeInsets.zero,
                     constraints: BoxConstraints(),
-                    onPressed: (){controller.addJob(
-                      Job(
-                        uid: "pIV31qfm7Tc4NSDQf8upKJlDG4x2",
-                        title: "HELLO",
-                        body: "WORD!!!",
-                        completeDate: DateTime.now(),
-                        id: '',
-                      ),
-                    );},
+                    onPressed:()=>saveJob(),
                     icon: Icon(Icons.check),
                   ),
                 ],
@@ -54,6 +62,7 @@ class EditJobPage extends GetView<HomeController> {
                       child: ConstrainedBox(
                         constraints: BoxConstraints(),
                         child: TextField(
+                          controller: titleController,
                           cursorColor: Theme.of(context).primaryColor,
                           style: TextStyle(
                             fontSize: 24,
@@ -74,7 +83,12 @@ class EditJobPage extends GetView<HomeController> {
                   ),
                   TextButton(
                     onPressed: (){},
-                    child: Text("지금"),
+                    child: Text(
+                      "지금",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -82,6 +96,7 @@ class EditJobPage extends GetView<HomeController> {
                 child: ConstrainedBox(
                   constraints: BoxConstraints(),
                   child: TextField(
+                    controller: bodyController,
                     cursorColor: Theme.of(context).primaryColor,
                     style: TextStyle(
                         fontSize: 18
