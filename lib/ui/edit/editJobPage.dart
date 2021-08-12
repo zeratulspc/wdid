@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wdid/controller/homeController.dart';
 import 'package:wdid/data/models/Job.dart';
+import 'package:wdid/ui/widgets/wdidDialog.dart';
 
 class EditJobPage extends GetView<HomeController> {
   final String? id = Get.parameters['id'];
@@ -14,16 +15,26 @@ class EditJobPage extends GetView<HomeController> {
     String uid = FirebaseAuth.instance.currentUser!.uid;
     String title = titleController.text;
     String body = bodyController.text;
-    controller.addJob(
-      Job(
-        uid: FirebaseAuth.instance.currentUser!.uid,
-        title: titleController.text,
-        body: bodyController.text,
-        completeDate: DateTime.now(),
-        id: '',
-      ),
-    );
-    Get.back();
+    if(title.length > 0) {
+      controller.addJob(
+        Job(
+          uid: uid,
+          title: title,
+          body: body,
+          completeDate: DateTime.now(),
+          id: '',
+        ),
+      );
+      Get.back();
+    } else {
+      Get.dialog(
+        WdidDialog(
+          title: "제목 미입력",
+          body: "제목을 입력해주세요.",
+          confirmButtonAction: (){},
+        )
+      );
+    }
   }
 
   @override
