@@ -51,7 +51,6 @@ class HomePage extends GetView<HomeController> {
       body: RefreshIndicator(
         color: Get.theme.primaryColor,
         onRefresh: () async {
-          print("refresh");
           await controller.refreshJobs();
         },
         child: SingleChildScrollView(
