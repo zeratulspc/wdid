@@ -1,12 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wdid/controller/editorController.dart';
 import 'package:wdid/controller/homeController.dart';
 import 'package:wdid/data/models/Job.dart';
 import 'package:wdid/ui/widgets/wdidDialog.dart';
 
-class EditJobPage extends GetView<HomeController> {
+class EditJobPage extends GetView<EditorController> {
   final String? id = Get.parameters['id'];
+
+  final homeController = Get.find<HomeController>();
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController bodyController = TextEditingController();
@@ -16,7 +19,7 @@ class EditJobPage extends GetView<HomeController> {
     String title = titleController.text;
     String body = bodyController.text;
     if(title.length > 0) {
-      controller.addJob(
+      homeController.addJob(
         Job(
           uid: uid,
           title: title,
