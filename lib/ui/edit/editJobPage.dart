@@ -89,7 +89,6 @@ class EditJobPage extends GetView<EditorController> {
                             hintText: "일정 추가",
                             border: InputBorder.none,
                             counterText: "",
-
                           ),
                         ),
                       )
